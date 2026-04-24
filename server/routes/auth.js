@@ -34,7 +34,8 @@ router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) return res.status(400).json({ success: false, message: 'Please provide email and password' });
 
-    const user = await User.findOne({ email }).select('+password');
+    const processedEmail = email.trim().toLowerCase();
+    const user = await User.findOne({ email: processedEmail }).select('+password');
     if (!user || !(await user.comparePassword(password))) {
       return res.status(401).json({ success: false, message: 'Invalid email or password' });
     }

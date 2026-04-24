@@ -68,7 +68,12 @@ export default function ProfilePage() {
   return (
     <div className={styles.page}>
       <div className={styles.header}>
-        <button className={styles.backBtn} onClick={() => navigate('/dashboard')}>← Dashboard</button>
+        <button className={styles.backBtn} onClick={() => navigate('/dashboard')}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: '8px', verticalAlign: 'middle' }}>
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          Dashboard
+        </button>
       </div>
 
       <div className={styles.profileSection}>

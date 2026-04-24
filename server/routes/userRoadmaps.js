@@ -85,7 +85,18 @@ router.get('/:id', async (req, res) => {
       .populate('createdBy', 'name avatar bio')
       .populate('comments.user', 'name avatar');
     if (!roadmap) return res.status(404).json({ success: false, message: 'Roadmap not found' });
-    if (!roadmap.isPublic && roadmap.createdBy._id.toString() !== req.user?._id?.toString()) {
+
+    let userId = null;
+    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+      try {
+        const token = req.headers.authorization.split(' ')[1];
+        const jwt = require('jsonwebtoken');
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        userId = decoded.id;
+      } catch (e) {}
+    }
+
+    if (!roadmap.isPublic && roadmap.createdBy._id.toString() !== userId?.toString()) {
       return res.status(403).json({ success: false, message: 'This roadmap is private' });
     }
     res.json({ success: true, roadmap });

@@ -74,8 +74,19 @@ export default function CreateRoadmapPage() {
   });
 
   const handleSave = async (publish = false) => {
-    if (!form.title.trim()) return setError('Title is required');
-    if (!form.description.trim()) return setError('Description is required');
+    if (!form.title.trim()) return setError('Roadmap title is required');
+    if (form.title.trim().length < 3) return setError('Roadmap title must be at least 3 characters');
+    if (!form.description.trim()) return setError('Roadmap description is required');
+    if (form.description.trim().length < 10) return setError('Roadmap description must be at least 10 characters');
+    
+    // Validate steps
+    if (form.steps.length === 0) return setError('At least one step is required');
+    for (let i = 0; i < form.steps.length; i++) {
+      const s = form.steps[i];
+      if (!s.title.trim()) return setError(`Step ${i + 1} is missing a title.`);
+      if (!s.description.trim()) return setError(`Step ${i + 1} is missing a description.`);
+    }
+
     setSaving(true); setError('');
     try {
       const payload = { ...form, isPublic: publish };

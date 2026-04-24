@@ -68,32 +68,39 @@ export default function ExplorePage() {
   return (
     <div className={styles.page}>
       <div className={styles.hero}>
-        <button className={styles.backBtn} onClick={() => navigate('/dashboard')}>← Dashboard</button>
-        <h1 className={styles.heroTitle}>🌐 Explore Roadmaps</h1>
-        <p className={styles.heroSub}>Discover community-created learning paths</p>
+        <div className={styles.heroContent}>
+          <button className={styles.backBtn} onClick={() => navigate('/dashboard')}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: 6, verticalAlign: 'middle' }}>
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Dashboard
+          </button>
+          <h1 className={styles.heroTitle}>Explore Roadmaps</h1>
+          <p className={styles.heroSub}>Discover community-created learning paths</p>
 
-        <form className={styles.searchForm} onSubmit={handleSearch}>
-          <input
-            className={styles.searchInput}
-            placeholder="Search roadmaps..."
-            value={searchInput}
-            onChange={e => setSearchInput(e.target.value)}
-          />
-          <button type="submit" className={styles.searchBtn}>Search</button>
-        </form>
+          <form className={styles.searchForm} onSubmit={handleSearch}>
+            <input
+              className={styles.searchInput}
+              placeholder="Search roadmaps..."
+              value={searchInput}
+              onChange={e => setSearchInput(e.target.value)}
+            />
+            <button type="submit" className={styles.searchBtn}>Search</button>
+          </form>
 
-        <div className={styles.filters}>
-          <div className={styles.filterGroup}>
-            {CATEGORIES.map(c => (
-              <button key={c} className={`${styles.filterChip} ${category === c ? styles.active : ''}`}
-                onClick={() => { setCategory(c); setPage(1); }}>{c}</button>
-            ))}
-          </div>
-          <div className={styles.filterGroup}>
-            {DIFFICULTIES.map(d => (
-              <button key={d} className={`${styles.filterChip} ${difficulty === d ? styles.active : ''}`}
-                onClick={() => { setDifficulty(d); setPage(1); }}>{d}</button>
-            ))}
+          <div className={styles.filters}>
+            <div className={styles.filterGroup}>
+              {CATEGORIES.map(c => (
+                <button key={c} className={`${styles.filterChip} ${category === c ? styles.active : ''}`}
+                  onClick={() => { setCategory(c); setPage(1); }}>{c}</button>
+              ))}
+            </div>
+            <div className={styles.filterGroup}>
+              {DIFFICULTIES.map(d => (
+                <button key={d} className={`${styles.filterChip} ${difficulty === d ? styles.active : ''}`}
+                  onClick={() => { setDifficulty(d); setPage(1); }}>{d}</button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
