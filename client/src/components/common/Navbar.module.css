@@ -121,6 +121,7 @@
   font-weight: 700;
   color: #0f1115;
   flex-shrink: 0;
+  object-fit: cover;
 }
 
 .userName {
@@ -161,6 +162,7 @@
   font-weight: 700;
   color: #0f1115;
   flex-shrink: 0;
+  object-fit: cover;
 }
 
 .dropdownName {

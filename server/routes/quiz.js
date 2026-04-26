@@ -12,6 +12,7 @@ const getQuizKey = (title) => {
   if (!title) return 'frontend';
   const t = title.toLowerCase();
   if (t.includes('front')) return 'frontend';
+  if (t.includes('react') && t.includes('advanced')) return 'reactadvanced';
   if (t.includes('back')) return 'backend';
   if (t.includes('devops')) return 'devops';
   if (t.includes('cloud')) return 'cloud';
@@ -20,7 +21,16 @@ const getQuizKey = (title) => {
   if (t.includes('database') || t.includes('sql')) return 'database';
   if (t.includes('mobile') || t.includes('android') || t.includes('ios')) return 'mobile';
   if (t.includes('block') || t.includes('web3')) return 'blockchain';
-  if (t.includes('data structure') || t.includes('dsa')) return 'dsa';
+  if (t.includes('data structure') || t.includes('dsa') || t.includes('algorithm')) return 'dsa';
+  if (t.includes('python')) return 'python';
+  if (t.includes('java')) return 'java';
+  if (t.includes('system design')) return 'systemdesign';
+  if (t.includes('typescript')) return 'typescript';
+  if (t.includes('game')) return 'gamedev';
+  if (t.includes('ui') || t.includes('ux')) return 'uiux';
+  if (t.includes('data engineer')) return 'dataengineering';
+  if (t.includes('linux')) return 'linuxadmin';
+  if (t.includes('api')) return 'apidesign';
   return 'frontend';
 };
 

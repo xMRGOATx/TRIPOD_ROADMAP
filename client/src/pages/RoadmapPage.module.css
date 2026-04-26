@@ -648,10 +648,6 @@
 
 /* ── Backdrop ── */
 .backdrop {
-  display: none;
-}
-.drawerOpen ~ .backdrop {
-  display: block;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.5);
@@ -686,13 +682,6 @@
     width: 100%;
   }
   .main { padding: 20px 16px 80px; }
-  .backdrop {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 999;
-  }
 }
 
 @media (max-width: 540px) {

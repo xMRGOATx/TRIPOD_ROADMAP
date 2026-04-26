@@ -66,6 +66,7 @@
   margin: 0 auto 20px;
   position: relative;
   z-index: 1;
+  object-fit: cover;
 }
 
 .profileName {

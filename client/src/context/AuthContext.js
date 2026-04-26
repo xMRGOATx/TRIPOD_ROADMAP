@@ -8,13 +8,25 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('tripod_token');
-    const savedUser = localStorage.getItem('tripod_user');
-    if (token && savedUser) {
-      setUser(JSON.parse(savedUser));
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    }
-    setLoading(false);
+    const initAuth = async () => {
+      const token = localStorage.getItem('tripod_token');
+      const savedUser = localStorage.getItem('tripod_user');
+      if (token && savedUser) {
+        setUser(JSON.parse(savedUser));
+        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        try {
+          const res = await api.get('/auth/me');
+          if (res.data.user) {
+            setUser(res.data.user);
+            localStorage.setItem('tripod_user', JSON.stringify(res.data.user));
+          }
+        } catch (err) {
+          console.error("Failed to fetch fresh user data:", err);
+        }
+      }
+      setLoading(false);
+    };
+    initAuth();
   }, []);
 
   const login = async (email, password) => {
@@ -37,6 +49,16 @@ export const AuthProvider = ({ children }) => {
     return userData;
   };
 
+  const googleLogin = async (credential) => {
+    const res = await api.post('/auth/google', { credential });
+    const { token, user: userData } = res.data;
+    localStorage.setItem('tripod_token', token);
+    localStorage.setItem('tripod_user', JSON.stringify(userData));
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    setUser(userData);
+    return userData;
+  };
+
   const logout = () => {
     localStorage.removeItem('tripod_token');
     localStorage.removeItem('tripod_user');
@@ -50,7 +72,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, signup, logout, updateUser }}>
+    <AuthContext.Provider value={{ user, loading, login, signup, googleLogin, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

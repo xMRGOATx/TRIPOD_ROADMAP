@@ -64,6 +64,7 @@ export default function ProfilePage() {
   const displayed = isOwn ? (activeTab === 'published' ? published : drafts) : roadmaps;
 
   const displayName = isOwn ? user?.name : (roadmaps[0]?.createdBy?.name || 'User');
+  const displayAvatar = isOwn ? user?.avatar : roadmaps[0]?.createdBy?.avatar;
 
   return (
     <div className={styles.page}>
@@ -77,7 +78,11 @@ export default function ProfilePage() {
       </div>
 
       <div className={styles.profileSection}>
-        <div className={styles.avatarLarge}>{displayName?.[0]?.toUpperCase()}</div>
+        {displayAvatar ? (
+          <img src={displayAvatar} alt={displayName} className={styles.avatarLarge} style={{ objectFit: 'cover' }} />
+        ) : (
+          <div className={styles.avatarLarge}>{displayName?.[0]?.toUpperCase()}</div>
+        )}
 
         {editing ? (
           <div className={styles.editForm}>
@@ -96,7 +101,7 @@ export default function ProfilePage() {
               <p className={styles.bio}>{isOwn ? user?.bio : roadmaps[0]?.createdBy?.bio}</p>
             )}
             <div className={styles.stats}>
-              <div className={styles.stat}><span className={styles.statNum}>{published.length || roadmaps.length}</span><span className={styles.statLabel}>Published</span></div>
+              <div className={styles.stat}><span className={styles.statNum}>{isOwn ? published.length : roadmaps.length}</span><span className={styles.statLabel}>Published</span></div>
               {isOwn && <div className={styles.stat}><span className={styles.statNum}>{drafts.length}</span><span className={styles.statLabel}>Drafts</span></div>}
             </div>
             {isOwn && (

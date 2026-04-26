@@ -163,6 +163,100 @@ const categoryQuizzes = {
     { q: 'What is latency?', opts: ['Server storage capacity', 'The delay before data transfer begins', 'Network bandwidth'], ans: 1 },
     { q: 'What port does HTTP use by default?', opts: ['443', '80', '3000'], ans: 1 }
   ],
+  'Python': [
+    { q: 'What is the output of print(type([]))?', opts: ["<class 'list'>", "<class 'array'>", "<class 'tuple'>"], ans: 0 },
+    { q: 'Which keyword defines a function in Python?', opts: ['function', 'def', 'lambda'], ans: 1 },
+    { q: 'What does "self" refer to in a class?', opts: ['The module', 'The current instance', 'A global variable'], ans: 1 },
+    { q: 'Which data structure is immutable?', opts: ['List', 'Set', 'Tuple'], ans: 2 },
+    { q: 'What is a list comprehension?', opts: ['A way to sort lists', 'Concise list creation from expressions', 'A type of loop'], ans: 1 },
+    { q: 'What does pip install do?', opts: ['Compiles code', 'Installs packages from PyPI', 'Creates environments'], ans: 1 },
+    { q: 'What is a decorator?', opts: ['A CSS class', 'A function that modifies another function', 'A type annotation'], ans: 1 },
+    { q: 'What is a virtual environment?', opts: ['A VM', 'Isolated Python dependency space', 'A Docker container'], ans: 1 },
+    { q: 'What does try/except handle?', opts: ['Loops', 'Exceptions and errors', 'File imports'], ans: 1 },
+    { q: 'What is PEP 8?', opts: ['A Python version', 'Python style guide', 'A testing framework'], ans: 1 }
+  ],
+  'Java': [
+    { q: 'What is the JVM?', opts: ['Java Visual Machine', 'Java Virtual Machine', 'Java Version Manager'], ans: 1 },
+    { q: 'Which keyword prevents inheritance?', opts: ['static', 'abstract', 'final'], ans: 2 },
+    { q: 'What is the difference between == and .equals()?', opts: ['No difference', '== compares references; .equals() compares values', '== is faster'], ans: 1 },
+    { q: 'What is an interface?', opts: ['A class with private methods', 'A contract defining method signatures', 'A GUI component'], ans: 1 },
+    { q: 'What is garbage collection?', opts: ['Deleting files', 'Automatic memory management', 'Removing imports'], ans: 1 },
+    { q: 'What are generics?', opts: ['Generic classes', 'Type parameters for type-safe code', 'A design pattern'], ans: 1 },
+    { q: 'What is Spring Boot?', opts: ['A compiler', 'A framework for production Java apps', 'An IDE'], ans: 1 },
+    { q: 'What does JDK stand for?', opts: ['Java Development Kit', 'Java Debug Kernel', 'Java Data Key'], ans: 0 },
+    { q: 'What is Maven used for?', opts: ['Testing', 'Build automation and dependency management', 'Database access'], ans: 1 },
+    { q: 'What is a lambda expression?', opts: ['A class type', 'Anonymous function for functional programming', 'A loop construct'], ans: 1 }
+  ],
+  'System Design': [
+    { q: 'What is horizontal scaling?', opts: ['More power to one server', 'Adding more servers', 'Reducing servers'], ans: 1 },
+    { q: 'What is the CAP theorem?', opts: ['Security protocol', 'Can only guarantee 2 of 3: Consistency, Availability, Partition tolerance', 'Caching strategy'], ans: 1 },
+    { q: 'What is a CDN?', opts: ['Database network', 'Content Delivery Network', 'Container network'], ans: 1 },
+    { q: 'What is database sharding?', opts: ['Backing up data', 'Splitting DB across multiple servers', 'Encrypting data'], ans: 1 },
+    { q: 'What is eventual consistency?', opts: ['Always consistent', 'Nodes eventually sync but not immediately', 'Never consistent'], ans: 1 },
+    { q: 'What is a message queue?', opts: ['An email service', 'Async communication between services', 'A database type'], ans: 1 },
+    { q: 'What is an API gateway?', opts: ['A firewall', 'Single entry point routing to microservices', 'A load balancer'], ans: 1 },
+    { q: 'What is the saga pattern?', opts: ['A story format', 'Managing distributed transactions', 'A caching method'], ans: 1 }
+  ],
+  'TypeScript': [
+    { q: 'What is TypeScript?', opts: ['A new language', 'A typed superset of JavaScript', 'A framework'], ans: 1 },
+    { q: 'What is a union type?', opts: ['Combining objects', 'A type that can be several types (string | number)', 'A CSS type'], ans: 1 },
+    { q: 'What does "any" type do?', opts: ['Strict type', 'Disables type checking for a variable', 'An error type'], ans: 1 },
+    { q: 'What are generics?', opts: ['Generic functions', 'Reusable type-safe components', 'A way to ignore types'], ans: 1 },
+    { q: 'What does "readonly" do?', opts: ['Makes global', 'Prevents modification after init', 'Makes private'], ans: 1 },
+    { q: 'What is type narrowing?', opts: ['Making types smaller', 'Refining types using type guards', 'Removing types'], ans: 1 },
+    { q: 'What is an interface?', opts: ['A CSS selector', 'A contract for object shapes', 'A function type'], ans: 1 },
+    { q: 'What does "as" keyword do?', opts: ['Creates aliases', 'Type assertion', 'Imports modules'], ans: 1 }
+  ],
+  'Game': [
+    { q: 'What is a game loop?', opts: ['A level type', 'Continuous cycle of input, update, render', 'A scoring system'], ans: 1 },
+    { q: 'What is Unity?', opts: ['A language', 'A cross-platform game engine', 'A graphics card'], ans: 1 },
+    { q: 'What is a sprite?', opts: ['A sound effect', 'A 2D image for game objects', 'A shader'], ans: 1 },
+    { q: 'What is a collider?', opts: ['A renderer', 'Defines shape for collision detection', 'A camera'], ans: 1 },
+    { q: 'What is a prefab?', opts: ['A script', 'Reusable GameObject template', 'A texture'], ans: 1 },
+    { q: 'What is pathfinding?', opts: ['Finding files', 'Algorithm for optimal routes between points', 'A render technique'], ans: 1 },
+    { q: 'What is a state machine in game AI?', opts: ['A server', 'System managing NPC behavior states', 'A physics engine'], ans: 1 },
+    { q: 'What is a rigidbody?', opts: ['A mesh type', 'Component enabling physics simulation', 'An animation clip'], ans: 1 }
+  ],
+  'UX': [
+    { q: 'What is the difference between UI and UX?', opts: ['Same thing', 'UI is visual; UX is overall experience', 'UI is mobile; UX is web'], ans: 1 },
+    { q: 'What is a wireframe?', opts: ['Finished design', 'Low-fidelity layout blueprint', 'An animation'], ans: 1 },
+    { q: 'What is a user persona?', opts: ['Real user', 'Fictional character representing target users', 'A login avatar'], ans: 1 },
+    { q: 'What does WCAG stand for?', opts: ['Web Content Accessibility Guidelines', 'Web Coding Guide', 'Web Component Architecture'], ans: 0 },
+    { q: 'What is a design system?', opts: ['A framework', 'Reusable components and guidelines for consistency', 'A color palette'], ans: 1 },
+    { q: 'What is usability testing?', opts: ['Bug testing', 'Observing users interact with a product', 'Performance testing'], ans: 1 },
+    { q: 'What is information architecture?', opts: ['Server architecture', 'Structural design for findability', 'Database design'], ans: 1 },
+    { q: 'What is a heuristic evaluation?', opts: ['Code review', 'Expert review against usability principles', 'User survey'], ans: 1 }
+  ],
+  'Data Engineering': [
+    { q: 'What is ETL?', opts: ['Encrypted Transfer Layer', 'Extract, Transform, Load', 'Event Trigger Logic'], ans: 1 },
+    { q: 'What is Apache Spark?', opts: ['A database', 'Distributed data processing engine', 'A web server'], ans: 1 },
+    { q: 'What is a data warehouse?', opts: ['File server', 'Centralized repo for analysis', 'A NoSQL database'], ans: 1 },
+    { q: 'What is Apache Kafka?', opts: ['Web hosting', 'Distributed event streaming platform', 'Image processing'], ans: 1 },
+    { q: 'What is a DAG in Airflow?', opts: ['A data type', 'Directed Acyclic Graph for task dependencies', 'A file format'], ans: 1 },
+    { q: 'Batch vs stream processing?', opts: ['No difference', 'Batch in chunks; streaming in real-time', 'Batch is faster'], ans: 1 },
+    { q: 'What is dbt?', opts: ['Database type', 'SQL transformation tool for data models', 'A Docker tool'], ans: 1 },
+    { q: 'What is a data lake?', opts: ['A backup', 'Raw data storage for analytics', 'A cache layer'], ans: 1 }
+  ],
+  'Linux': [
+    { q: 'What does chmod do?', opts: ['Changes ownership', 'Changes file permissions', 'Creates directories'], ans: 1 },
+    { q: 'What is the root user?', opts: ['Regular user', 'Superuser with full access', 'Guest account'], ans: 1 },
+    { q: 'What does grep do?', opts: ['Compresses files', 'Searches text patterns in files', 'Creates users'], ans: 1 },
+    { q: 'What is systemd?', opts: ['A shell script', 'Init system and service manager', 'A file system'], ans: 1 },
+    { q: 'What is SSH?', opts: ['Secure Shell for encrypted remote access', 'Simple Server Host', 'Storage Share Hub'], ans: 0 },
+    { q: 'What is a cron job?', opts: ['A background process', 'Scheduled task at set intervals', 'A file permission'], ans: 1 },
+    { q: 'What does the pipe operator (|) do?', opts: ['Creates files', 'Sends output of one command as input to another', 'Runs in parallel'], ans: 1 },
+    { q: 'What is sudo?', opts: ['A user name', 'Execute command as superuser', 'A config file'], ans: 1 }
+  ],
+  'API': [
+    { q: 'What does REST stand for?', opts: ['Remote Execution', 'Representational State Transfer', 'Real-time Event System'], ans: 1 },
+    { q: 'What is HTTP status 201?', opts: ['Server error', 'Resource created successfully', 'Not found'], ans: 1 },
+    { q: 'What is OAuth 2.0?', opts: ['Database protocol', 'Authorization framework', 'Encryption algorithm'], ans: 1 },
+    { q: 'What is rate limiting?', opts: ['Limiting queries', 'Controlling API requests per time period', 'Reducing speed'], ans: 1 },
+    { q: 'What is GraphQL?', opts: ['A database', 'Query language letting clients request exact data', 'A REST framework'], ans: 1 },
+    { q: 'What is API versioning?', opts: ['Tracking usage', 'Managing multiple API versions to prevent breaks', 'Code versioning'], ans: 1 },
+    { q: 'What is an API contract?', opts: ['Legal document', 'Specification defining request/response formats', 'Pricing model'], ans: 1 },
+    { q: 'What is idempotency?', opts: ['A security measure', 'Same request produces same result regardless of repetition', 'A caching method'], ans: 1 }
+  ],
   'default': [
     { q: 'What does API stand for?', opts: ['Application Programming Interface', 'Applied Process Integration', 'Advanced Program Instructions'], ans: 0 },
     { q: 'What does DRY stand for?', opts: ['Do Repeat Yourself', "Don't Repeat Yourself", 'Data Resource Yield'], ans: 1 },
@@ -170,8 +264,8 @@ const categoryQuizzes = {
     { q: 'What is version control?', opts: ['A backup tool', 'A system that tracks changes to code over time', 'A testing framework'], ans: 1 },
     { q: 'What does MVC stand for?', opts: ['Model View Controller', 'Module Version Control', 'Main Visual Component'], ans: 0 },
     { q: 'What is a REST API?', opts: ['A sleeping computer', 'An architectural style for building web services', 'A JavaScript library'], ans: 1 },
-    { q: 'What is localhost?', opts: ['A remote server', 'Your own computer acting as a server', 'A cloud service'], ans: 1 },
-    { q: 'What does CRUD stand for?', opts: ['Create Read Update Delete', 'Copy Run Upload Download', 'Cache Render Use Deploy'], ans: 0 }
+    { q: 'What is an algorithm?', opts: ['A programming language', 'A step-by-step procedure to solve a problem', 'A database type'], ans: 1 },
+    { q: 'What is open source?', opts: ['Free hardware', 'Software with publicly available source code', 'A cloud service'], ans: 1 }
   ]
 };
 
@@ -295,10 +389,19 @@ export default function RoadmapPage() {
   };
 
   const getQuizSetForCategory = (categoryName) => {
-    // 1. Try category name match
+    // 1. Try roadmap title match first (e.g., "Java Development" -> "Java" quiz set)
+    if (roadmap?.title) {
+      const rt = roadmap.title;
+      const roadmapKeyMatch = Object.keys(categoryQuizzes).find(k => 
+        k !== 'default' && rt.toLowerCase().includes(k.toLowerCase())
+      );
+      if (roadmapKeyMatch) return categoryQuizzes[roadmapKeyMatch];
+    }
+
+    // 2. Try category name match
     let keyMatch = Object.keys(categoryQuizzes).find(k => categoryName.toLowerCase().includes(k.toLowerCase()) && k !== 'default');
     
-    // 2. Try steps title match
+    // 3. Try steps title match
     if (!keyMatch) {
       const catObj = grouped.find(g => g.category === categoryName);
       if (catObj) {
