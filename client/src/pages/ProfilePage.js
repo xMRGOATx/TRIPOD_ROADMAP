@@ -79,7 +79,7 @@ export default function ProfilePage() {
 
       <div className={styles.profileSection}>
         {displayAvatar ? (
-          <img src={displayAvatar} alt={displayName} className={styles.avatarLarge} style={{ objectFit: 'cover' }} />
+          <img src={displayAvatar} alt={displayName} className={styles.avatarLarge} style={{ objectFit: 'cover' }} referrerPolicy="no-referrer" />
         ) : (
           <div className={styles.avatarLarge}>{displayName?.[0]?.toUpperCase()}</div>
         )}

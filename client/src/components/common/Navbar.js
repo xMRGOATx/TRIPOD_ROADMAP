@@ -29,7 +29,7 @@ export default function Navbar() {
         <div className={styles.right}>
           <div className={styles.userMenu} onClick={() => setMenuOpen(m => !m)}>
             {user?.avatar ? (
-              <img src={user.avatar} alt={user?.name} className={styles.avatar} />
+              <img src={user.avatar} alt={user?.name} className={styles.avatar} referrerPolicy="no-referrer" />
             ) : (
               <div className={styles.avatar}>{initials}</div>
             )}
@@ -42,7 +42,7 @@ export default function Navbar() {
             <div className={styles.dropdown}>
               <div className={styles.dropdownUser}>
                 {user?.avatar ? (
-                  <img src={user.avatar} alt={user?.name} className={styles.dropdownAvatar} />
+                  <img src={user.avatar} alt={user?.name} className={styles.dropdownAvatar} referrerPolicy="no-referrer" />
                 ) : (
                   <div className={styles.dropdownAvatar}>{initials}</div>
                 )}

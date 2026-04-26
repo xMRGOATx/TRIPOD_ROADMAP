@@ -34,36 +34,21 @@ export default function LoginPage() {
       setError('');
       setGoogleLoading(true);
       try {
-        // Exchange the access token for user info, then use ID token flow
-        // With implicit flow we get an access_token, so we'll send it to backend
-        // Actually, let's use the 'auth-code' approach or get the id_token
-        // The useGoogleLogin implicit flow gives access_token, not id_token.
-        // We need to use the Google One Tap / credential approach instead.
-        // Let's fetch user info from Google and send to our backend
+        // Fetch user info from Google using the access token
         const userInfoRes = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
           headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
         });
         const userInfo = await userInfoRes.json();
         
-        // Send the access token to our backend for verification
-        const api = (await import('../utils/api')).default;
-        const res = await api.post('/auth/google', { 
-          credential: tokenResponse.access_token,
-          userInfo: {
-            googleId: userInfo.sub,
-            email: userInfo.email,
-            name: userInfo.name,
-            picture: userInfo.picture,
-          }
+        // Use the AuthContext googleLogin which properly updates state
+        await googleLogin(tokenResponse.access_token, {
+          googleId: userInfo.sub,
+          email: userInfo.email,
+          name: userInfo.name,
+          picture: userInfo.picture,
         });
         
-        const { token, user: userData } = res.data;
-        localStorage.setItem('tripod_token', token);
-        localStorage.setItem('tripod_user', JSON.stringify(userData));
-        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        
         navigate('/dashboard');
-        window.location.reload();
       } catch (err) {
         setError(err.response?.data?.message || 'Google login failed. Please try again.');
       } finally {

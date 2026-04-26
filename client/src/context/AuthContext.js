@@ -49,8 +49,8 @@ export const AuthProvider = ({ children }) => {
     return userData;
   };
 
-  const googleLogin = async (credential) => {
-    const res = await api.post('/auth/google', { credential });
+  const googleLogin = async (credential, userInfo) => {
+    const res = await api.post('/auth/google', { credential, userInfo });
     const { token, user: userData } = res.data;
     localStorage.setItem('tripod_token', token);
     localStorage.setItem('tripod_user', JSON.stringify(userData));

@@ -11,7 +11,7 @@ const progressRoutes = require('./routes/progress');
 const quizRoutes = require('./routes/quiz');
 const userRoadmapRoutes = require('./routes/userRoadmaps');
 const chatRoutes = require('./routes/chat');
-const adminRoutes = require('./routes/admin');
+// const adminRoutes = require('./routes/admin'); // disabled — adminOnly middleware not implemented yet
 
 const app = express();
 
@@ -23,23 +23,7 @@ try {
   console.warn('Could not create uploads dir (running in serverless environment)');
 }
 
-// CORS – allow local dev + deployed Vercel frontend
-const allowedOrigins = [
-  'http://localhost:3000',
-  process.env.CLIENT_URL
-].filter(Boolean);
-
-app.use(cors({
-  origin: function (origin, callback) {
-    // allow requests with no origin (mobile apps, curl, etc.)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true
-}));
+app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:3000', credentials: true }));
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
@@ -50,7 +34,7 @@ app.use('/api/progress', progressRoutes);
 app.use('/api/quiz', quizRoutes);
 app.use('/api/roadmap', userRoadmapRoutes);
 app.use('/api/chat', chatRoutes);
-app.use('/api/admin', adminRoutes);
+// app.use('/api/admin', adminRoutes); // disabled — adminOnly middleware not implemented yet
 
 app.get('/api/health', (req, res) => res.json({ status: 'OK', message: 'Tripod Roadmap API running' }));
 

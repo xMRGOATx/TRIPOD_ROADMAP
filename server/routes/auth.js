@@ -38,6 +38,8 @@ router.post('/google', async (req, res) => {
       email = verifiedInfo.email;
       name = verifiedInfo.name;
       picture = verifiedInfo.picture;
+      
+      console.log('Google login verified info:', { email, name, hasPicture: !!picture, pictureUrl: picture });
     } else {
       return res.status(400).json({ success: false, message: 'Invalid Google authentication data' });
     }
@@ -51,10 +53,20 @@ router.post('/google', async (req, res) => {
 
     if (user) {
       // Link Google account if user exists by email but not yet linked
+      let needsSave = false;
       if (!user.googleId) {
         user.googleId = googleId;
-        if (picture && !user.avatar) user.avatar = picture;
+        needsSave = true;
+      }
+      // Always update avatar from Google if available
+      if (picture && user.avatar !== picture) {
+        console.log('Updating user avatar from Google');
+        user.avatar = picture;
+        needsSave = true;
+      }
+      if (needsSave) {
         await user.save();
+        console.log('User saved with updated info');
       }
     } else {
       // Create new user
