@@ -10,6 +10,8 @@ const roadmapRoutes = require('./routes/roadmaps');
 const progressRoutes = require('./routes/progress');
 const quizRoutes = require('./routes/quiz');
 const userRoadmapRoutes = require('./routes/userRoadmaps');
+const chatRoutes = require('./routes/chat');
+const adminRoutes = require('./routes/admin');
 
 const app = express();
 
@@ -21,7 +23,23 @@ try {
   console.warn('Could not create uploads dir (running in serverless environment)');
 }
 
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:3000', credentials: true }));
+// CORS – allow local dev + deployed Vercel frontend
+const allowedOrigins = [
+  'http://localhost:3000',
+  process.env.CLIENT_URL
+].filter(Boolean);
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // allow requests with no origin (mobile apps, curl, etc.)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
@@ -31,6 +49,8 @@ app.use('/api/roadmaps', roadmapRoutes);
 app.use('/api/progress', progressRoutes);
 app.use('/api/quiz', quizRoutes);
 app.use('/api/roadmap', userRoadmapRoutes);
+app.use('/api/chat', chatRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.get('/api/health', (req, res) => res.json({ status: 'OK', message: 'Tripod Roadmap API running' }));
 
@@ -40,10 +60,7 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/tripod
 mongoose.connect(MONGODB_URI)
   .then(() => {
     console.log('✅ MongoDB connected');
-    // Only listen if not running on Vercel (Vercel sets VERCEL=1)
-    if (!process.env.VERCEL) {
-      app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
-    }
+    app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
   })
   .catch(err => {
     console.error('❌ MongoDB connection error:', err.message);
