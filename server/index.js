@@ -23,7 +23,10 @@ try {
   console.warn('Could not create uploads dir (running in serverless environment)');
 }
 
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:3000', credentials: true }));
+// CORS — strip trailing slash to avoid mismatch
+const allowedOrigin = (process.env.CLIENT_URL || 'http://localhost:3000').replace(/\/+$/, '');
+console.log('🔒 CORS allowed origin:', allowedOrigin);
+app.use(cors({ origin: allowedOrigin, credentials: true }));
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
